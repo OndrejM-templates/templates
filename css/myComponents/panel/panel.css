@@ -9,6 +9,7 @@
 .panel { 
     border: 0.1em solid;
     padding: 0.2em;
+    margin: 0.2em;
 
     -moz-box-shadow: 0 0 0.25em #b2d1ff;
     -webkit-box-shadow: 0 0 0.25em #b2d1ff;
@@ -19,16 +20,22 @@
     border-radius: 0.3em;
 }
 
-/*colors*/
 .panel {
+    border-color: #cccccc;
+    background-color: #efefef;
+    color: #666666;
+}
+
+/*colors*/
+.panel.blue {
     border-color: #b2d1ff;
-    background: #f3f3ff;
+    background-color: #f3f3ff;
     color: #006dba;
 }
 
 /*in red colors*/
 .panel.red {
-    background: #fff3f3;
+    background-color: #fff3f3;
     border-color: #ffaaaa;
     color: #cc0000;
 }
