@@ -1,0 +1,58 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <script type="text/javascript">
+            function getSetProperty(propName, newValue) {
+                if (typeof newValue !== "undefined" && newValue !== null ) {
+                    console.log(propName + " changed: " + this.obj[propName] + " -> " + newValue);
+                    this.obj[propName] = newValue;
+                    return this;
+                } else {
+                    return this.obj[propName];
+                }
+            }
+            function createGetSetPropertyFor(propName) {
+                return function(newValue) {
+                    return getSetProperty(propName, newValue);
+                }
+            }
+            
+            
+            var obj = {};
+            obj.p = {
+                obj: obj,
+                value: function(newValue) {
+                    var propName = "value";
+                    if (typeof newValue !== "undefined" && newValue !== null ) {
+                        console.log(propName + " changed: " + this.obj[propName] + " -> " + newValue);
+                        this.obj[propName] = newValue;
+                        return this;
+                    } else {
+                        return this.obj[propName];
+                    }
+                },
+                addProperty : function(propName, value) {
+                    this[propName] = createGetSetPropertyFor(propName);
+                    return this[propName](value);
+                }
+            }
+            
+            obj.value = "1"; // initial value
+
+            // prints twice 1
+            console.log(obj.value);
+            console.log(obj.p.value());
+            
+            // changes value to 2 and prints value changed: 1 -> 2
+            obj.p.value(2);
+            
+            // adds new custom property
+            // prints: name changed: undefined -> obj 
+            obj.p.addProperty("name", "obj");
+            
+            window.obj = obj;
+        </script>
+    </body>
+</html>
