@@ -1,6 +1,7 @@
 
 window.dojoConfig = {
-    async: 1
+    async: 1,
+            packages: [localPackage('js')]
 };
 
 /* To include local package when not relative to dojo root, example: dojoConfig = {packages: [localPackage('js', 'package/subpackage')]}
